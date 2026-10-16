@@ -1,2 +1,3 @@
 machine-learning-venv/
 .ipynb_checkpoints/
+house-price-prediction/src/__pycache__/preprocessing.cpython-314.pyc
