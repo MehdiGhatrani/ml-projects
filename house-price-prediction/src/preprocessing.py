@@ -13,6 +13,18 @@ population_ix = 5
 households_ix = 6
 
 class CombinedAttributesAdder(BaseEstimator, TransformerMixin):
+    """
+    A custom transformer that adds new numerical attributes
+    to the housing dataset.
+
+    The new attributes are:
+        - rooms_per_household: Number of rooms per household.
+        - population_per_household: Number of people per household.
+        - bedrooms_per_room: Ratio of bedrooms to total rooms.
+
+    These attributes may help the machine learning model
+    capture additional relationships in the data.
+    """
     def __init__(self):
         pass
 
@@ -39,18 +51,14 @@ num_pipeline = Pipeline([
     ("scaler", StandardScaler()),
 ])
 
-
 num_attribs = [
     "longitude", "latitude", "housing_median_age",
     "total_rooms", "total_bedrooms", "population",
     "households", "median_income"
 ]
 
-
-
-
-
 cat_attribs = ["ocean_proximity"]
+
 
 full_pipeline = ColumnTransformer([
     ("num", num_pipeline, num_attribs),
